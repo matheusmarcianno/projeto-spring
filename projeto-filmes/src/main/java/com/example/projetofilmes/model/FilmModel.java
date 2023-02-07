@@ -1,19 +1,32 @@
 package com.example.projetofilmes.model;
 
-import lombok.AllArgsConstructor;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Data;
+import java.sql.Date;
 
-import java.util.Date;
 
+@Table(name = "M_FILMES")
+@Entity
 @Data
-@AllArgsConstructor
-public class FilmeModel {
+public class FilmModel {
+    @Id
     private int id;
+
+    @Column(name = "Nome")
     private String name;
+
+    @Column(name = "Descricao")
     private String description;
+
+    @Column(name = "Data_Lancamento")
     private Date releaseDate;
-    private double numberSales;
-    private String countryOrigin;
 
+    @Column(name = "Quantidade_Venda")
+    private float numberSales;
 
+    @Column(name = "Pais_Origem")
+    private String originCountry;
 }
