@@ -38,4 +38,24 @@ public class usuarioController {
     public void delete(@PathVariable int id) {
         repository.deleteById(id);
     }
+
+    @GetMapping("/searchCpf/{cpf}")
+    public usuarioModel getByCpf(@PathVariable String cpf){
+        return repository.findByCPF(cpf);
+    }
+
+    @GetMapping("/searchNome/{nome}")
+    public usuarioModel getByNome(@PathVariable String nome){
+        return repository.findByNOME(nome);
+    }
+
+    @GetMapping("/searchPersonJava")
+    public List<usuarioModel> getPersonJava(){
+        return repository.findPersonJava();
+    }
+
+    @GetMapping("searchByCharacteristics/{NOME}/{SEXO}/{TIPO_SANGUINEO}")
+    public usuarioModel findByCharacteristics(@PathVariable String NOME, @PathVariable String SEXO, @PathVariable String TIPO_SANGUINEO){
+        return repository.findByCharacteristics(NOME,SEXO,TIPO_SANGUINEO);
+    }
 }

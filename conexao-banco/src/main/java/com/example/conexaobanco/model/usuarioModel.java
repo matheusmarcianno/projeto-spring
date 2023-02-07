@@ -16,14 +16,14 @@ public class usuarioModel {
     @Column(name = "Id")
     private int Id;
 
-    @Column(name = "Cpf")
-    private String Cpf;
+    @Column(name = "CPF")
+    private String CPF;
 
     @Column(name = "Sexo")
     private String Sexo;
 
-    @Column(name = "Nome")
-    private String Nome;
+    @Column(name = "NOME")
+    private String NOME;
 
     @Column(name = "Data_de_Nascimento")
     private Date DataNascimento;
