@@ -2,9 +2,12 @@ package com.example.projetofilmes.controller;
 
 import com.example.projetofilmes.model.FilmModel;
 import com.example.projetofilmes.repository.FilmRepository;
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -21,6 +24,21 @@ public class FilmController {
     @GetMapping("search/{id}")
     private ResponseEntity<FilmModel> getById(@PathVariable int id) {
         return ResponseEntity.ok(repository.findById(id).get());
+    }
+
+    @GetMapping("/searchByYear")
+    public FilmModel findFilmByYear(){
+        return repository.findFilmByYear();
+    }
+
+    @GetMapping("/searchCountry/{country}")
+    public List<FilmModel> findByCountry(@PathVariable String country) {
+        return repository.findByCountry(country);
+    }
+
+    @GetMapping("searchFilmsByReleaseDate/{releaseDate}")
+    public List<FilmModel> findByReleaseDate(@PathVariable Date releaseDate) {
+        return repository.findByReleaseDate(releaseDate);
     }
 
     @PutMapping("/update/{id}")
