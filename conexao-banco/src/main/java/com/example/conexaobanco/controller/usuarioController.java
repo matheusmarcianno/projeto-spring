@@ -54,8 +54,13 @@ public class usuarioController {
         return repository.findPersonJava();
     }
 
-    @GetMapping("searchByCharacteristics/{NOME}/{SEXO}/{TIPO_SANGUINEO}")
+    /*@GetMapping("searchByCharacteristics/{NOME}/{SEXO}/{TIPO_SANGUINEO}")
     public usuarioModel findByCharacteristics(@PathVariable String NOME, @PathVariable String SEXO, @PathVariable String TIPO_SANGUINEO){
         return repository.findByCharacteristics(NOME,SEXO,TIPO_SANGUINEO);
+    }*/
+
+    @GetMapping("/searchOverAge")
+    public List<usuarioModel> findOverAgeUsers(){
+        return repository.findOverAgeUsers();
     }
 }
