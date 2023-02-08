@@ -3,8 +3,7 @@ package com.example.projetofilmes.repository;
 import com.example.projetofilmes.model.FilmModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public interface FilmRepository extends JpaRepository<FilmModel, Integer> {
@@ -15,7 +14,5 @@ public interface FilmRepository extends JpaRepository<FilmModel, Integer> {
     @Query(value = "SELECT * FROM M_FILMES WHERE PAIS_ORIGEM = ?", nativeQuery = true)
     public List<FilmModel> findByCountry(String originCountry);
 
-    Query(value = "")
-
-    //public List<FilmModel> findByReleaseDate(Date releaseDate);
+    public List<FilmModel> findByReleaseDate(Date releaseDate);
 }
