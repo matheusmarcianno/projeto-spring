@@ -2,7 +2,9 @@ package com.example.projetospringprodutos.controller;
 
 import com.example.projetospringprodutos.model.ProdutoModel;
 import com.example.projetospringprodutos.repository.ProdutoRepository;
+import jakarta.validation.executable.ValidateOnExecution;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -59,7 +61,7 @@ public class ProdutoController {
     }
 
     @PostMapping("/salvar")
-    public ProdutoModel create(@RequestBody ProdutoModel model) {
+    public ProdutoModel create(@RequestBody @Validated ProdutoModel model) {
        return repository.save(model);
     }
 
