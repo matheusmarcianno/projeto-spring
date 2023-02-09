@@ -1,0 +1,40 @@
+package com.example.demojoinex.controller;
+
+import com.example.demojoinex.model.LivroModel;
+import com.example.demojoinex.repository.LivroRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/livros")
+public class LivroController {
+    @Autowired
+    private LivroRepository repository;
+
+    @GetMapping("buscar")
+    public List<LivroModel> findAll(){
+        return repository.findAll();
+    }
+
+    @GetMapping("buscar/{id}")
+    public LivroModel findById(@PathVariable int id) {
+       return repository.findById(id).get();
+    }
+
+    @PostMapping("/salvar")
+    public LivroModel save(@RequestBody LivroModel livro) {
+        return repository.save(livro);
+    }
+
+    @PutMapping("/atualizar")
+    public LivroModel update(@RequestBody LivroModel livro) {
+        return repository.save(livro);
+    }
+
+    @DeleteMapping("/excluir/{id}")
+    public void delete(@PathVariable int id) {
+        repository.deleteById(id);
+    }
+}
